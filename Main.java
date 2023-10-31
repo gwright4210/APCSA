@@ -4,7 +4,7 @@ public class Main{
             IntVector test = new IntVector();
 
             System.out.println("Size: " + test.size());
-
+            
             for(int i = 0; i < 20; i++){
                 test.add(1);
             }
@@ -12,6 +12,7 @@ public class Main{
             test.add(2, 4);
             System.out.println(test);
             test.remove(4);
+
             System.out.println(test);
             for(int i = 0; i < test.size(); i++){}
                
