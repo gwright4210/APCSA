@@ -12,7 +12,7 @@ public class Main {
        nums.add(4);
        nums.add(6);
        nums.add(3);
-
+    
        System.out.println(strings);
        System.out.println(nums);
 
