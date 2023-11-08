@@ -1,7 +1,9 @@
 package LinearStructures;
+import java.lang.Iterable;
+import java.util.Iterator;
 
 //generic class
-public class ArrayList<E> {
+public class ArrayList<E> implements Iterable<E>{
     //protected is public in the package, but private outside the package
     protected static final int INITIAL_CAPACITY = 10;
 
@@ -136,4 +138,25 @@ public class ArrayList<E> {
     //TODO: bring over the toString method from IntVector
     // Test this ArrayList class' add functions in Main
     // Push to github
+
+    public Iterator<E> iterator(){
+        return new ArrayListIterator();
+    }
+
+    //class inside of another class
+    private class ArrayListIterator implements Iterator<E> {
+        private int current = 0;
+
+        public boolean hasNext(){
+            return (current < size);
+        }
+
+        public E next(){
+            return data[current++];
+        }
+
+        public void remove(){
+            ArrayList.this.remove(current);
+        }
+    }
 }

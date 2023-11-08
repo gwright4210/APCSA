@@ -16,5 +16,8 @@ public class Main {
        System.out.println(strings);
        System.out.println(nums);
 
+       for(String s : strings){
+        System.out.println(s);
+       }
     }
 }
