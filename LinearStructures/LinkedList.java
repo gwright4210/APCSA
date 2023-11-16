@@ -132,11 +132,84 @@ public class LinkedList<E> {
         head = tail = null;
     }
     
+   public E remove(int index){
+        if(size == 0) return null;
+        else if(size ==1) {
+            Node<E> temp = head;
+            clear();
+            return temp.element;
+        }
+        else{
+            Node<E> current = head;
 
+            for(int i = 0; i < index-2; i++ ){
+                current = current.next;
+            }
+
+            Node<E> temp = current.next;
+            current.next = current.next.next;
+            size--;
+            return temp.element;
+        }
+    }
+   
+
+   public E get(int index){
+    if(size == 0) return null;
+        else if(size ==1) {
+            Node<E> temp = head;
+            return temp.element;
+        }
+        else{
+            Node<E> current = head;
+
+            for(int i = 0; i < index-1; i++ ){
+                current = current.next;
+
+            }
+            return current.element;
+        }
+   }
+
+
+   public int lastIndexOf(E e){
+        int lastIndex = -1;
+        Node<E> current = head;
+        for(int i = 0; i < size - 1; i++){
+            current = current.next;
+            if(current.element == e){
+                lastIndex = i;  
+            }
+        }
+        return lastIndex;
+   }
+
+   // make new node and remove old node
+   public E set(int index, E e){
+        if(size == 0) return null;
+        else if(size ==1) {
+            head.element = e;
+            return head.element;
+        }
+        else{
+            Node<E> current = head;
+
+            for(int i = 0; i < index-1; i++ ){
+                current = current.next;
+            }
+            current.element = e;
+            return current.element;
+        }
+   }
+
+
+   public Iterator<E> Iterator(){}
+
+   
     //Why is it static? - 
     private static class Node<E>{
         E element;
-        Node next;
+        Node<E> next;
 
         public Node(E element){
             this.element = element;
