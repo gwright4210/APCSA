@@ -1,5 +1,9 @@
 package LinearStructures;
 
+import java.util.Iterator;
+import java.lang.Iterable;
+
+
 public class LinkedList<E> {
     private int size = 0;
 
@@ -197,13 +201,33 @@ public class LinkedList<E> {
             for(int i = 0; i < index-1; i++ ){
                 current = current.next;
             }
+            E oldValue = current.element;
             current.element = e;
-            return current.element;
+            return oldValue;
         }
    }
 
 
-   public Iterator<E> Iterator(){}
+    public Iterator<E> iterator(){
+        return new LinkedListIterator();
+    }
+
+    //class inside of another class
+    private class LinkedListIterator implements Iterator<E> {
+        private Node<E> current = head;
+
+        @Override
+        public boolean hasNext(){
+            return(current.next != null);
+        }
+        @Override
+        public E next(){
+            return (current.next).element;
+        }
+        @Override
+        public void remove(){
+            LinkedList.this.remove(indexOf(current.element));
+    }
 
    
     //Why is it static? - 
